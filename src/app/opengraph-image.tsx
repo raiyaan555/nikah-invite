@@ -35,18 +35,8 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 28,
-            marginTop: 8,
-            color: "#b08d3e",
-          }}
-        >
-          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-        </div>
-        <div
-          style={{
-            display: "flex",
             fontSize: 42,
-            marginTop: 24,
+            marginTop: 8,
             letterSpacing: 1,
             color: "#b08d3e",
             whiteSpace: "nowrap",
