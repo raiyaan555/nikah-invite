@@ -2,6 +2,6 @@ import { InvitationExperience } from "@/components/invitation/InvitationExperien
 
 export const dynamic = "force-static";
 
-export default function HomePage() {
-  return <InvitationExperience />;
+export default function PhotosPage() {
+  return <InvitationExperience startOpen scrollTo="story" />;
 }
