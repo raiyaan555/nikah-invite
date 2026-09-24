@@ -28,7 +28,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install -g npm@11.6.2
+          npm ci
 
       - name: Build static site
         env:
