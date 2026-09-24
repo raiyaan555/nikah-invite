@@ -330,7 +330,7 @@ a {
   justify-content: center;
   text-align: center;
   background-color: #f4eadc;
-  background-image: url("/images/backgrounds/envelope-cover.jpg");
+  background-image: var(--envelope-cover);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -627,7 +627,7 @@ a {
     height: min(100dvh - 4rem, 52rem);
     min-height: 38rem;
     background-color: #f4eadc;
-    background-image: url("/images/backgrounds/envelope-cover.jpg");
+    background-image: var(--envelope-cover);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -3,6 +3,7 @@
 import { MapButton } from "@/components/ui/MapButton";
 import { StationeryCard } from "@/components/ui/StationeryCard";
 import { venueFullAddress, wedding } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 
 export function VenueSection() {
   return (
@@ -11,7 +12,7 @@ export function VenueSection() {
       <div className="story-title-rule" aria-hidden="true" />
       <img
         className="venue-art"
-        src="/images/decorations/venue-line.png?v=2"
+        src={withBasePath("/images/decorations/venue-line.png?v=2")}
         alt=""
       />
       <p className="card-place">{wedding.venue.name}</p>

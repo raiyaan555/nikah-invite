@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { wedding } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 
 type ImageSlotProps = {
   src?: string;
@@ -22,7 +23,7 @@ export function ImageSlot({
     <div className={`image-slot ${className}`.trim()}>
       {src ? (
         <Image
-          src={src}
+          src={withBasePath(src)}
           alt={alt}
           fill
           sizes={sizes}

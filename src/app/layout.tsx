@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import localFont from "next/font/local";
 import { wedding } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -105,6 +106,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       data-theme={wedding.theme}
       className={`${display.variable} ${script.variable} ${names.variable} ${body.variable} ${arabic.variable} ${calligraphy.variable} ${bismillah.variable}`}
+      style={{ ["--envelope-cover" as string]: `url("${withBasePath("/images/backgrounds/envelope-cover.jpg")}")` }}
     >
       <body>{children}</body>
     </html>

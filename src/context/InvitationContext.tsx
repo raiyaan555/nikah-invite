@@ -12,6 +12,7 @@ import {
   type ReactNode,
 } from "react";
 import { wedding } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 
 type InvitationContextValue = {
   isOpen: boolean;
@@ -58,7 +59,7 @@ export function InvitationProvider({
 
   useEffect(() => {
     if (!canPlayMusic) return;
-    const audio = new Audio(wedding.music.source);
+    const audio = new Audio(withBasePath(wedding.music.source));
     audio.loop = true;
     audio.preload = "none";
     audioRef.current = audio;

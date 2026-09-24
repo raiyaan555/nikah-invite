@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Section } from "@/components/ui/Section";
+import { withBasePath } from "@/lib/base-path";
 
 export function StationeryCard({
   id,
@@ -17,10 +18,10 @@ export function StationeryCard({
   return (
     <Section id={id} className={`stationery-card${className ? ` ${className}` : ""}`}>
       <div className="cover-botanical is-tr" aria-hidden="true">
-        <img src="/images/decorations/floral-tr.png" alt="" />
+        <img src={withBasePath("/images/decorations/floral-tr.png")} alt="" />
       </div>
       <div className="cover-botanical is-bl" aria-hidden="true">
-        <img src="/images/decorations/floral-bl.png" alt="" />
+        <img src={withBasePath("/images/decorations/floral-bl.png")} alt="" />
       </div>
       <div className={`card-body${wide ? " is-wide" : ""}`}>{children}</div>
     </Section>

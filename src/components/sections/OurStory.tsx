@@ -1,6 +1,7 @@
 "use client";
 
 import { wedding } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 import { StationeryCard } from "@/components/ui/StationeryCard";
 
 export function OurStory() {
@@ -11,7 +12,7 @@ export function OurStory() {
       <div className="story-layout">
         <img
           className="story-art"
-          src="/images/decorations/story-floral.png?v=2"
+          src={withBasePath("/images/decorations/story-floral.png?v=2")}
           alt=""
         />
         <div className="story-copy">

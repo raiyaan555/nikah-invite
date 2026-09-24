@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/base-path";
+
 function FloralCorner({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -118,10 +120,10 @@ export function CoverBotanicals() {
   return (
     <>
       <div className="cover-botanical is-tr" aria-hidden="true">
-        <img src="/images/decorations/floral-tr.png" alt="" />
+        <img src={withBasePath("/images/decorations/floral-tr.png")} alt="" />
       </div>
       <div className="cover-botanical is-bl" aria-hidden="true">
-        <img src="/images/decorations/floral-bl.png" alt="" />
+        <img src={withBasePath("/images/decorations/floral-bl.png")} alt="" />
       </div>
     </>
   );

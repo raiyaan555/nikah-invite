@@ -6,9 +6,10 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { wedding, type GalleryImage } from "@/config/wedding";
+import { withBasePath } from "@/lib/base-path";
 
 export function Gallery() {
-  const images = wedding.gallery;
+  const images = [...wedding.gallery] as GalleryImage[];
   const [active, setActive] = useState<number | null>(null);
 
   if (!wedding.showPhotography || !images.length) return null;
@@ -112,7 +113,7 @@ function Lightbox({
           >
             {image.src ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img className="lightbox-image" src={image.src} alt={image.alt} />
+              <img className="lightbox-image" src={withBasePath(image.src)} alt={image.alt} />
             ) : (
               <div
                 className="image-slot"
