@@ -21,6 +21,9 @@ export function EventsSection() {
           <div className="reception-event" key={event.id}>
             <p className="card-event">{event.name}</p>
             <p className="card-meta">{event.dateLabel}</p>
+            {event.id === "nikah" && wedding.nikahIslamicDate ? (
+              <p className="card-meta">{wedding.nikahIslamicDate}</p>
+            ) : null}
             {event.timeLabel ? <p className="card-meta">{event.timeLabel}</p> : null}
           </div>
         ))}

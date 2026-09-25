@@ -14,6 +14,7 @@ export type InvitationConfig = WeddingConfig & {
     transliteration: string;
     withLoveNames: string;
   };
+  nikahIslamicDate?: string;
 };
 
 const nikah = {
@@ -87,7 +88,6 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
       return {
         ...event,
         dateLabel: "Saturday, 9th January 2027",
-        islamicDate: "1 Sha'ban 1448 AH",
         timeLabel: "After Zohar prayer\n(12:15 pm)",
       };
     }
@@ -168,6 +168,7 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
             bride: "D/o of Mrs and Mr\nSaeed Khan",
             groom: "S/o of Mrs and Mr\nKhurram Khan",
           },
+          nikahIslamicDate: "1 Shaʻban, 1448 AH",
           closing: {
             arabic: "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
             transliteration:
