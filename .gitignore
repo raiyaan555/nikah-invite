@@ -35,6 +35,11 @@ yarn-error.log*
 .env*
 !.env.example
 
+# Google Cloud service-account keys
+service-account*.json
+*-service-account*.json
+leetmemo-*.json
+
 # guest database
 /data
 

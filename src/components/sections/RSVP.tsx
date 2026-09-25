@@ -1,12 +1,14 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArabicText } from "@/components/decorative/Arabic";
 import { StationeryCard } from "@/components/ui/StationeryCard";
 import { useWedding } from "@/context/WeddingConfigContext";
-import { submitRsvp, type DietaryChoice } from "@/lib/rsvp";
+import { isGroomInvitationPath, submitRsvp, type DietaryChoice } from "@/lib/rsvp";
 
 export function RSVP() {
+  const pathname = usePathname();
   const wedding = useWedding();
   const [attending, setAttending] = useState<boolean | null>(null);
   const [name, setName] = useState("");
@@ -45,6 +47,7 @@ export function RSVP() {
       dietary: attending ? dietary : "",
       message: message.trim(),
       submittedAt: new Date().toISOString(),
+      ...(isGroomInvitationPath(pathname) ? { invitationSource: "groom" as const } : {}),
     });
     setPending(false);
 

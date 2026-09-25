@@ -186,9 +186,9 @@ export const wedding = {
     coverWish: "With love and prayers,\nwe would be honoured\nby your presence",
     togetherWithFamilies: "Together with their families",
     inviteYou: "please save the date\nand let us know if you can join us",
-    delighted: "Save the date\nfor the celebration of",
-    blessing: "Save the date.\nA formal invitation will follow.\nKindly tell us if you will be able to come.",
-    openInvitation: "Save the Date",
+    delighted: "Save the dates\nfor the celebration of",
+    blessing: "Save the dates.\nA formal invitation will follow.\nKindly tell us if you will be able to come.",
+    openInvitation: "Save the Dates",
     saveTheDate: "Save the Date",
     ourStory: "Our Story",
     story: [

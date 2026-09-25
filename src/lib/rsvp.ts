@@ -8,7 +8,13 @@ export type RsvpPayload = {
   dietary: DietaryChoice | "";
   message: string;
   submittedAt: string;
+  invitationSource?: "groom";
 };
+
+export function isGroomInvitationPath(pathname: string) {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  return path === "/groom" || path.endsWith("/groom");
+}
 
 export type RsvpResult = {
   ok: boolean;
@@ -20,8 +26,13 @@ export async function submitRsvp(payload: RsvpPayload): Promise<RsvpResult> {
     sessionStorage.setItem("wedding:rsvp", JSON.stringify(payload));
   }
 
+  const hosted =
+    payload.invitationSource === "groom"
+      ? process.env.NEXT_PUBLIC_RSVP_API_URL?.trim()
+      : "";
+
   try {
-    const response = await fetch("/api/rsvp", {
+    const response = await fetch(hosted || "/api/rsvp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

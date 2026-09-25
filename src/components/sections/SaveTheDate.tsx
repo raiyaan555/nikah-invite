@@ -59,13 +59,26 @@ function displayName(person: Person) {
 }
 
 function renderDay(day: string) {
-  const match = /^(\d+)(st|nd|rd|th)$/i.exec(day);
+  const pieces = day.split(/(\s*&\s*)/);
+  if (pieces.length === 1) return withOrdinal(day);
+
+  return pieces.map((piece, index) =>
+    /^\s*&\s*$/.test(piece) ? (
+      <span key={index}>{piece}</span>
+    ) : (
+      <span key={index}>{withOrdinal(piece.trim())}</span>
+    ),
+  );
+}
+
+function withOrdinal(day: string) {
+  const match = /^(\d+)(st|nd|rd|th)?$/i.exec(day);
   if (!match) return day;
 
   return (
     <>
       {match[1]}
-      <span className="date-ordinal">{match[2]}</span>
+      <span className="date-ordinal">{(match[2] ?? "th").toLowerCase()}</span>
     </>
   );
 }

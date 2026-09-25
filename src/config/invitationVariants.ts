@@ -77,7 +77,12 @@ export function isInvitationVariant(value: string): value is InvitationVariant {
 }
 
 export function defaultInvitation(): InvitationConfig {
-  return { ...wedding, showRsvp: true, showKindRequest: true };
+  return {
+    ...wedding,
+    showRsvp: true,
+    showKindRequest: false,
+    navigation: wedding.navigation.filter((item) => item.id !== "request"),
+  };
 }
 
 export function resolveInvitation(variant: InvitationVariant): InvitationConfig {
@@ -106,7 +111,7 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
     : `${spec.brideName} & ${groomName}`;
   const navigation = wedding.navigation
     .filter((item) => spec.showRsvp || item.id !== "rsvp")
-    .filter((item) => !isBride || item.id !== "request")
+    .filter((item) => item.id !== "request")
     .map((item) => {
       if (item.id === "events") return { ...item, label: spec.eventsHeading };
       if (item.id === "date" && isBride) return { ...item, label: "Invitation" };
@@ -116,10 +121,10 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
   return {
     ...wedding,
     showRsvp: spec.showRsvp,
-    showKindRequest: !isBride,
+    showKindRequest: false,
     site: {
       ...wedding.site,
-      title: isBride ? `${coupleLabel} — Invitation` : `${coupleLabel} — Save the Date`,
+      title: isBride ? `${coupleLabel} — Invitation` : `${coupleLabel} — Save the Dates`,
       description: isBride
         ? `You are invited to the Nikah Ceremony of ${coupleLabel} on ${day} January 2027 in Lucknow.`
         : spec.showRsvp

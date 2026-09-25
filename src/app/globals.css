@@ -363,12 +363,12 @@ a {
 .arabic.is-scripture,
 .arabic.is-calligraphy,
 [lang="ar"] {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   direction: rtl;
   line-height: 1.85;
   font-weight: 400;
   font-style: normal;
-  color: var(--primary);
+  color: var(--gold);
   letter-spacing: 0;
   text-transform: none;
   white-space: pre-line;
@@ -580,6 +580,7 @@ a {
   max-width: 9.5rem;
 }
 
+.date-ordinal,
 .is-bride-front .date-ordinal {
   font-size: 0.42em;
   letter-spacing: 0;
@@ -668,13 +669,13 @@ a {
 }
 
 .cover-hint[lang="ar"] {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 0.92rem;
   letter-spacing: 0;
   text-transform: none;
   line-height: 1.8;
   margin-top: 0.5rem;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 @media (min-width: 768px) {
@@ -898,14 +899,16 @@ a {
 
 .arabic-date-month {
   margin-top: 0.55rem;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 1.2rem;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .arabic-weekday {
   margin: 0.2rem 0 0;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 0.95rem;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .date-rule {
@@ -959,10 +962,10 @@ a {
 }
 
 .date-pair-join.is-arabic {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 1.5rem;
   margin-bottom: 1.05rem;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .date-pair .date-day {
@@ -1003,9 +1006,9 @@ a {
 
 .countdown-unit-ar {
   margin-top: 0.12rem;
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 0.78rem;
-  color: var(--primary);
+  color: var(--gold);
   letter-spacing: 0;
 }
 
@@ -1092,9 +1095,9 @@ a {
 }
 
 .event-name-ar {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 1.4rem;
-  color: var(--primary);
+  color: var(--gold);
   margin-bottom: 0.15rem;
 }
 
@@ -1173,12 +1176,12 @@ a {
 }
 
 .btn-ar {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 0.95rem;
   letter-spacing: 0;
   text-transform: none;
   line-height: 1.2;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .calendar-menu {
@@ -1545,11 +1548,11 @@ a {
 }
 
 .nav-ar {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .nav-close {
@@ -1596,9 +1599,9 @@ a {
 }
 
 .site-footer .arabic {
-  font-family: var(--font-arabic), "Times New Roman", serif;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
   font-style: normal;
-  color: var(--primary);
+  color: var(--gold);
   max-width: 16.5rem;
   line-height: 1.85;
   font-size: 1.12rem;
@@ -1663,6 +1666,16 @@ a {
 
 .stationery-card .cover-botanical.is-bl {
   width: min(50%, 14rem);
+}
+
+#date.stationery-card:not(.is-bride-front) .cover-botanical.is-tr,
+#events.stationery-card:not(.is-nikah-card) .cover-botanical.is-tr {
+  width: min(41%, 11.5rem);
+}
+
+#date.stationery-card:not(.is-bride-front) .cover-botanical.is-bl,
+#events.stationery-card:not(.is-nikah-card) .cover-botanical.is-bl {
+  width: min(42%, 12rem);
 }
 
 .is-nikah-card.stationery-card .cover-botanical.is-tr {
@@ -1747,6 +1760,16 @@ a {
   margin: 0.2rem 0;
   font-size: clamp(2rem, 8vw, 2.6rem);
   font-variant-numeric: lining-nums;
+}
+
+.stationery-card:not(.is-bride-front) .couple-line-name,
+.stationery-card:not(.is-bride-front) .couple-line-amp {
+  font-size: clamp(2.55rem, 11vw, 3.2rem);
+  line-height: 1.02;
+}
+
+.stationery-card:not(.is-bride-front) .card-serif.is-date {
+  font-size: clamp(1.45rem, 5vw, 1.7rem);
 }
 
 .card-amp {
@@ -1914,6 +1937,14 @@ a {
   margin-top: 0.7rem;
 }
 
+.reception-frame:not(.is-nikah-detail) .reception-event .card-event,
+#events.stationery-card:not(.is-nikah-card) .card-place {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.32em;
+  text-decoration-color: currentColor;
+}
+
 .reception-event .card-meta,
 .reception-frame > .card-meta,
 .reception-frame > .card-address {
@@ -2074,6 +2105,11 @@ a {
 
 .closing-ref {
   margin-top: 0.45rem;
+  font-family: var(--font-bismillah), var(--font-arabic), serif;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--gold);
 }
 
 .closing-names {
