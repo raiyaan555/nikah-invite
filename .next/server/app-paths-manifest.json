@@ -1,0 +1,21 @@
+{
+  "/[variant]/page": "app/[variant]/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/admin/export/route": "app/api/admin/export/route.js",
+  "/api/admin/login/route": "app/api/admin/login/route.js",
+  "/api/admin/logout/route": "app/api/admin/logout/route.js",
+  "/api/guests/route": "app/api/guests/route.js",
+  "/api/rsvp/route": "app/api/rsvp/route.js",
+  "/apple-icon/route": "app/apple-icon/route.js",
+  "/events/page": "app/events/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/icon/route": "app/icon/route.js",
+  "/invite/[type]/page": "app/invite/[type]/page.js",
+  "/opengraph-image/route": "app/opengraph-image/route.js",
+  "/page": "app/page.js",
+  "/photos/page": "app/photos/page.js",
+  "/rsvp/page": "app/rsvp/page.js",
+  "/twitter-image/route": "app/twitter-image/route.js"
+}

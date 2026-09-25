@@ -1,0 +1,25 @@
+/* [project]/src/app/names_ffcdaa97.module.css [app-client] (css) */
+@font-face {
+  font-family: names;
+  src: url("../media/BrittanySignature-s.p.0i7apnzkl6m2s.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: names Fallback;
+  src: local(Arial);
+  ascent-override: 128.35%;
+  descent-override: 54.04%;
+  line-gap-override: 0.0%;
+  size-adjust: 74.02%;
+}
+
+.names_ffcdaa97-module__FqVBKW__className {
+  font-family: names, names Fallback;
+}
+
+.names_ffcdaa97-module__FqVBKW__variable {
+  --font-names: "names", "names Fallback";
+}
+
+/*# sourceMappingURL=src_app_names_ffcdaa97_module_css_1igg3k2._.single.css.map*/

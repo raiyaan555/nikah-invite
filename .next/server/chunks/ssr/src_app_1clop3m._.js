@@ -1,0 +1,3 @@
+module.exports=[48161,a=>{"use strict";a.i(7997),a.i(99475);let b=a.i(1418).wedding.site.ogImageAlt;a.s(["alt",0,b,"contentType",0,"image/png","dynamic",0,"force-static","size",0,{width:1200,height:630}])},78280,a=>{"use strict";var b=a.i(48161),c=a.i(52425);let d={alt:b.alt,contentType:b.contentType,dynamic:"force-static",size:b.size};async function e(a){let{__metadata_id__:b,...e}=await a.params,f=(0,c.fillMetadataSegment)("/",e,"twitter-image",!1);return[function(a){let b={alt:a.alt,type:a.contentType||"image/png",url:f+"?e81b76b157daff78"},{size:c}=a;return c&&(b.width=c.width,b.height=c.height),b}(d)]}a.s(["default",0,e],78280)},73817,function(a){a.n(a.i(78280))}];
+
+//# sourceMappingURL=src_app_1clop3m._.js.map

@@ -1,0 +1,3 @@
+module.exports=[78880,a=>{"use strict";var b=a.i(7997);a.s(["default",0,function(){return(0,b.jsx)("div",{className:"stationery-stage",children:(0,b.jsx)("article",{className:"stationery-card",children:(0,b.jsx)("div",{className:"stationery-copy is-entry",children:(0,b.jsx)("p",{className:"stationery-kicker",children:"This invitation could not be found."})})})})}])},69250,function(a){a.n(a.i(78880))}];
+
+//# sourceMappingURL=src_app_invite_%5Btype%5D_not-found_tsx_1q7t8y3._.js.map

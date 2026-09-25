@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/raiyaan/Downloads/WEDDING/src/app/invite/[type]/not-found.tsx"],"sourcesContent":["export default function InviteNotFound() {\n  return (\n    <div className=\"stationery-stage\">\n      <article className=\"stationery-card\">\n        <div className=\"stationery-copy is-entry\">\n          <p className=\"stationery-kicker\">This invitation could not be found.</p>\n        </div>\n      </article>\n    </div>\n  );\n}\n"],"names":["InviteNotFound","className"],"mappings":";;;;;;AAAe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;kBACb,cAAA,8OAAC;YAAQA,WAAU;sBACjB,cAAA,8OAAC;gBAAIA,WAAU;0BACb,cAAA,8OAAC;oBAAEA,WAAU;8BAAoB;;;;;;;;;;;;;;;;;;;;;AAK3C"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/raiyaan/Downloads/WEDDING/src/components/stationery/StationeryBody.tsx"],"sourcesContent":["\"use client\";\n\nimport { useEffect } from \"react\";\n\nexport function StationeryBody() {\n  useEffect(() => {\n    document.body.classList.add(\"is-stationery\");\n    return () => {\n      document.body.classList.remove(\"is-stationery\");\n    };\n  }, []);\n\n  return null;\n}\n"],"names":["StationeryBody","document","body","classList","add","remove"],"mappings":";;;;AAEA;;AAFA;;AAIO,SAASA;;IACd,IAAA,0KAAS;oCAAC;YACRC,SAASC,IAAI,CAACC,SAAS,CAACC,GAAG,CAAC;YAC5B;4CAAO;oBACLH,SAASC,IAAI,CAACC,SAAS,CAACE,MAAM,CAAC;gBACjC;;QACF;mCAAG,EAAE;IAEL,OAAO;AACT;GATgBL;KAAAA"}}]
+}

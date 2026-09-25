@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,83558,t=>{"use strict";var o=t.i(71645);t.s(["StationeryBody",0,function(){return(0,o.useEffect)(()=>(document.body.classList.add("is-stationery"),()=>{document.body.classList.remove("is-stationery")}),[]),null}])}]);

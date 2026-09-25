@@ -1,0 +1,3 @@
+module.exports=[6856,a=>{"use strict";var b=a.i(7997),c=a.i(58678);a.s(["default",0,function({children:a}){return(0,b.jsxs)("div",{className:"stationery-root",children:[(0,b.jsx)(c.StationeryBody,{}),a]})}])},89971,function(a){a.n(a.i(6856))},37500,a=>{"use strict";a.s(["StationeryBody",()=>b]);let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call StationeryBody() from the server but StationeryBody is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/src/components/stationery/StationeryBody.tsx","StationeryBody")},58678,a=>{"use strict";var b=a.i(37500);a.n(b)}];
+
+//# sourceMappingURL=src_0d_5-v5._.js.map

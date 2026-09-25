@@ -1,0 +1,21 @@
+{
+  "/[variant]/page": "/[variant]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/page": "/admin",
+  "/api/admin/export/route": "/api/admin/export",
+  "/api/admin/login/route": "/api/admin/login",
+  "/api/admin/logout/route": "/api/admin/logout",
+  "/api/guests/route": "/api/guests",
+  "/api/rsvp/route": "/api/rsvp",
+  "/apple-icon/route": "/apple-icon",
+  "/events/page": "/events",
+  "/favicon.ico/route": "/favicon.ico",
+  "/icon/route": "/icon",
+  "/invite/[type]/page": "/invite/[type]",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/photos/page": "/photos",
+  "/rsvp/page": "/rsvp",
+  "/twitter-image/route": "/twitter-image"
+}
