@@ -1942,7 +1942,7 @@ a {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.32em;
-  text-decoration-color: currentColor;
+  text-decoration-color: var(--accent);
 }
 
 .reception-event .card-meta,
