@@ -15,6 +15,7 @@ export type WeddingEvent = {
   name: string;
   arabicName?: string;
   dateLabel: string;
+  islamicDate?: string;
   timeLabel: string;
   venue: string;
   address: string;

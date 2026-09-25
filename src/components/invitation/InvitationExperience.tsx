@@ -9,6 +9,7 @@ import { SaveTheDate } from "@/components/sections/SaveTheDate";
 import { VenueSection } from "@/components/sections/VenueSection";
 import { InvitationCover } from "@/components/invitation/InvitationCover";
 import { FloatingNavigation } from "@/components/ui/FloatingNavigation";
+import { ScrollCue } from "@/components/ui/ScrollCue";
 import { MusicControl } from "@/components/ui/MusicControl";
 import { defaultInvitation, resolveInvitation, type InvitationVariant } from "@/config/invitationVariants";
 import { InvitationProvider } from "@/context/InvitationContext";
@@ -33,12 +34,13 @@ export function InvitationExperience({
           <div className="paper">
             <FloatingNavigation />
             <MusicControl />
+            <ScrollCue />
             <main className="invitation-main">
               <SaveTheDate />
               <EventsSection />
               <OurStory />
               <VenueSection />
-              <KindRequest />
+              {config.showKindRequest ? <KindRequest /> : null}
               {config.showRsvp ? <RSVP /> : null}
               <Closing />
             </main>

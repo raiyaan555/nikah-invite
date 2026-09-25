@@ -419,6 +419,10 @@ a {
   margin-bottom: 0;
 }
 
+.arabic-ayah.is-closing {
+  font-size: clamp(0.94rem, 3.7vw, 1.12rem);
+}
+
 .ayah-ref {
   margin-top: 0.45rem;
   font-size: 1.12rem;
@@ -512,35 +516,91 @@ a {
   color: var(--secondary);
 }
 
+.is-bride-front.stationery-card {
+  padding: 3.4rem 1.05rem 5.6rem;
+}
+
+.is-bride-front .cover-botanical.is-tr {
+  width: min(30%, 7.6rem);
+}
+
+.is-bride-front .cover-botanical.is-bl {
+  width: min(32%, 8rem);
+}
+
+.is-bride-front .card-body {
+  width: min(100%, 23.5rem);
+}
+
 .is-bride-front .arabic-bismillah {
-  font-size: clamp(1.05rem, 4.1vw, 1.34rem);
+  margin-bottom: 1.7rem;
+  font-size: clamp(0.92rem, 3.2vw, 1.08rem);
 }
 
 .is-bride-front .card-kicker.is-lead {
-  font-size: 0.72rem;
+  margin-bottom: 1.45rem;
+  font-size: 0.6rem;
   letter-spacing: 0.16em;
 }
 
-.is-bride-front .couple-with-parents .couple-line-name,
+.is-bride-front .couple-with-parents {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  column-gap: 0.35rem;
+  row-gap: 1.15rem;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 0.15rem;
+}
+
+.is-bride-front .couple-with-parents .couple-line-name {
+  font-size: clamp(1.48rem, 6.1vw, 1.92rem);
+  line-height: 1.1;
+  white-space: nowrap;
+  text-align: center;
+  max-width: none;
+}
+
 .is-bride-front .couple-with-parents .couple-line-amp {
-  font-size: clamp(1.16rem, 4.8vw, 1.55rem);
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0;
+  font-size: clamp(1.48rem, 6.1vw, 1.92rem);
+  align-self: center;
+  justify-self: center;
 }
 
 .is-bride-front .couple-parent {
-  font-size: 0.78rem;
-  white-space: nowrap;
+  align-self: start;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  white-space: pre-line;
+  max-width: 9.5rem;
+}
+
+.is-bride-front .date-ordinal {
+  font-size: 0.42em;
+  letter-spacing: 0;
+  line-height: 0;
+  vertical-align: 0.72em;
+  margin-left: 0.05em;
 }
 
 .is-bride-front .invite-facts .card-meta {
   font-size: 0.74rem;
 }
 
+.is-bride-front .diamond-rule {
+  width: min(16rem, 90%);
+  margin: 1.7rem auto;
+}
+
 .is-bride-front .card-serif.is-date {
-  font-size: clamp(2.25rem, 9vw, 2.95rem);
+  font-size: clamp(1.45rem, 5vw, 1.7rem);
 }
 
 .is-bride-front .card-place {
-  font-size: 1.28rem;
+  font-size: 1.05rem;
 }
 
 .is-bride-front .card-address {
@@ -1396,6 +1456,48 @@ a {
   color: var(--secondary);
 }
 
+.scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: max(5.2rem, calc(env(safe-area-inset-bottom) + 4.6rem));
+  padding: 0.2rem 0.55rem;
+  background: color-mix(in srgb, var(--background) 78%, transparent);
+  z-index: 35;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  color: var(--primary);
+  pointer-events: none;
+  animation: scroll-cue 1.6s var(--ease-out) infinite;
+}
+
+.scroll-cue span {
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(0.4rem);
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue {
+    animation: none;
+  }
+}
+
 /* Nav + music */
 .float-nav {
   position: fixed;
@@ -1559,6 +1661,14 @@ a {
 
 .stationery-card .cover-botanical.is-bl {
   width: min(50%, 14rem);
+}
+
+.is-bride-front.stationery-card .cover-botanical.is-tr {
+  width: min(30%, 7.6rem);
+}
+
+.is-bride-front.stationery-card .cover-botanical.is-bl {
+  width: min(32%, 8rem);
 }
 
 .card-body {
@@ -1930,12 +2040,26 @@ a {
   margin-top: 1.2rem;
 }
 
+.closing-dua {
+  max-width: 17.5rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 .closing-ref {
   margin-top: 0.45rem;
 }
 
 .closing-names {
   margin-top: 1.45rem;
+}
+
+.closing-names.is-family {
+  display: block;
+  max-width: 16rem;
+  white-space: normal;
+  font-size: clamp(1.22rem, 5vw, 1.55rem);
+  line-height: 1.35;
 }
 
 @media (min-width: 768px) {

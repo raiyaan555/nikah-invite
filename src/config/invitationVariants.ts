@@ -4,9 +4,15 @@ export type InvitationVariant = "groom" | "bride";
 
 export type InvitationConfig = WeddingConfig & {
   showRsvp: boolean;
+  showKindRequest: boolean;
   parents?: {
     bride: string;
     groom: string;
+  };
+  closing?: {
+    arabic: string;
+    transliteration: string;
+    withLoveNames: string;
   };
 };
 
@@ -63,11 +69,6 @@ export const invitationConfigs = {
 const brideCopy = {
   delighted: "You are invited\nto the Nikah Ceremony of",
   openInvitation: "Open Invitation",
-  requests: [
-    "Kindly join us for the ceremony",
-    "Please be on time.",
-    "Vegetarian meals will also be served.",
-  ],
 } as const;
 
 export function isInvitationVariant(value: string): value is InvitationVariant {
@@ -75,7 +76,7 @@ export function isInvitationVariant(value: string): value is InvitationVariant {
 }
 
 export function defaultInvitation(): InvitationConfig {
-  return { ...wedding, showRsvp: true };
+  return { ...wedding, showRsvp: true, showKindRequest: true };
 }
 
 export function resolveInvitation(variant: InvitationVariant): InvitationConfig {
@@ -83,21 +84,28 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
   const events = spec.eventIds.map((id) => {
     const event = eventCatalog[id];
     if (variant === "bride" && id === "nikah") {
-      return { ...event, timeLabel: "After Zohar prayer\n(12:15 pm)" };
+      return {
+        ...event,
+        dateLabel: "Saturday, 9th January 2027",
+        islamicDate: "1 Sha'ban 1448 AH",
+        timeLabel: "After Zohar prayer\n(12:15 pm)",
+      };
     }
     return event;
   });
   const days = spec.eventIds.map((id) => eventDays[id]);
-  const day = days.map((item) => item.day).join(" & ");
+  const dayNumber = days.map((item) => item.day).join(" & ");
+  const isBride = variant === "bride";
+  const day = isBride ? "9th" : dayNumber;
   const weekday = days.map((item) => item.weekday).join(" & ");
   const groomName = wedding.couple.person2.firstName;
-  const isBride = variant === "bride";
   const brideSurname = "Khan";
   const coupleLabel = isBride
     ? `${spec.brideName} ${brideSurname} & ${groomName} ${brideSurname}`
     : `${spec.brideName} & ${groomName}`;
   const navigation = wedding.navigation
     .filter((item) => spec.showRsvp || item.id !== "rsvp")
+    .filter((item) => !isBride || item.id !== "request")
     .map((item) => {
       if (item.id === "events") return { ...item, label: spec.eventsHeading };
       if (item.id === "date" && isBride) return { ...item, label: "Invitation" };
@@ -107,6 +115,7 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
   return {
     ...wedding,
     showRsvp: spec.showRsvp,
+    showKindRequest: !isBride,
     site: {
       ...wedding.site,
       title: isBride ? `${coupleLabel} — Invitation` : `${coupleLabel} — Save the Date`,
@@ -131,6 +140,7 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
       },
       person2: {
         ...wedding.couple.person2,
+        firstName: wedding.couple.person2.firstName,
         lastName: isBride ? brideSurname : wedding.couple.person2.lastName,
       },
     },
@@ -153,7 +163,18 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
     events,
     navigation,
     ...(isBride
-      ? { parents: { bride: "Daughter of Dr. Saeed Khan", groom: "Son of Khurram Khan" } }
+      ? {
+          parents: {
+            bride: "D/o of Mrs and Mr\nSaeed Khan",
+            groom: "S/o of Mrs and Mr\nKhurram Khan",
+          },
+          closing: {
+            arabic: "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+            transliteration:
+              "May Allah bless you, and shower His blessings upon you, and join you together in goodness.",
+            withLoveNames: "Dr. Saeed Khan & Family",
+          },
+        }
       : {}),
     copy: {
       ...wedding.copy,

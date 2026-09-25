@@ -14,15 +14,12 @@ export function SaveTheDate() {
       <p className="card-kicker is-lead">{wedding.copy.delighted}</p>
       {wedding.parents ? (
         <div className="couple-with-parents">
-          <div className="couple-person">
-            <span className="couple-line-name">{displayName(wedding.couple.person1)}</span>
-            <span className="couple-parent">{wedding.parents.bride}</span>
-          </div>
+          <span className="couple-line-name">{displayName(wedding.couple.person1)}</span>
           <span className="couple-line-amp">{wedding.couple.monogramJoiner}</span>
-          <div className="couple-person">
-            <span className="couple-line-name">{displayName(wedding.couple.person2)}</span>
-            <span className="couple-parent">{wedding.parents.groom}</span>
-          </div>
+          <span className="couple-line-name">{displayName(wedding.couple.person2)}</span>
+          <span className="couple-parent">{wedding.parents.bride}</span>
+          <span className="couple-parent-gap" aria-hidden="true" />
+          <span className="couple-parent">{wedding.parents.groom}</span>
         </div>
       ) : (
         <p className="couple-line">
@@ -41,7 +38,7 @@ export function SaveTheDate() {
       <div className="invite-facts">
         <div>
           <p className="card-meta">{wedding.date.display.month}</p>
-          <p className="card-serif is-date">{wedding.date.display.day}</p>
+          <p className="card-serif is-date">{renderDay(wedding.date.display.day)}</p>
           <p className="card-meta">{wedding.date.display.year}</p>
         </div>
         <div className="invite-place">
@@ -59,4 +56,16 @@ export function SaveTheDate() {
 
 function displayName(person: Person) {
   return [person.firstName, person.lastName].filter(Boolean).join(" ");
+}
+
+function renderDay(day: string) {
+  const match = /^(\d+)(st|nd|rd|th)$/i.exec(day);
+  if (!match) return day;
+
+  return (
+    <>
+      {match[1]}
+      <span className="date-ordinal">{match[2]}</span>
+    </>
+  );
 }
