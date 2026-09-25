@@ -38,6 +38,12 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /nikah-invite
           NEXT_PUBLIC_RSVP_API_URL: ${{ secrets.NEXT_PUBLIC_RSVP_API_URL }}
         run: |
+          # Drop dev route types checked in with the repo. Next.js 16 type-checks
+          # .next/dev/types even when distDir is dist, and those files still point
+          # at /api and /admin after the directories below are moved aside.
+          rm -rf .next dist
+          # The static export must not read server secrets from a committed env file.
+          rm -f .env.local
           mkdir -p .pages-exclude
           mv src/app/api .pages-exclude/api
           mv src/app/admin .pages-exclude/admin
