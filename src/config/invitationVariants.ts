@@ -88,7 +88,8 @@ export function resolveInvitation(variant: InvitationVariant): InvitationConfig 
       return {
         ...event,
         dateLabel: "Saturday, 9th January 2027",
-        timeLabel: "After Zohar prayer\n(12:15 pm)",
+        timeLabel:
+          "Nikah Ceremony\nwill be solemnized\nafter Zohar Namaz\n(12:15 pm)\n(Insha'Allah)\nFollowed by Lunch.",
       };
     }
     return event;

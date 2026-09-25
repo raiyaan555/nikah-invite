@@ -13,18 +13,22 @@ export function EventsSection() {
   if (!wedding.events.length) return null;
 
   return (
-    <StationeryCard id="events">
-      <div className="reception-frame">
+    <StationeryCard id="events" className={wedding.nikahIslamicDate ? "is-nikah-card" : ""}>
+      <div className={`reception-frame${wedding.nikahIslamicDate ? " is-nikah-detail" : ""}`}>
         <h2 className="card-title">{wedding.copy.eventsHeading}</h2>
         <ReceptionRule />
         {wedding.events.map((event) => (
           <div className="reception-event" key={event.id}>
-            <p className="card-event">{event.name}</p>
+            {wedding.nikahIslamicDate && event.id === "nikah" ? null : <p className="card-event">{event.name}</p>}
             <p className="card-meta">{event.dateLabel}</p>
             {event.id === "nikah" && wedding.nikahIslamicDate ? (
               <p className="card-meta">{wedding.nikahIslamicDate}</p>
             ) : null}
-            {event.timeLabel ? <p className="card-meta">{event.timeLabel}</p> : null}
+            {event.timeLabel ? (
+              <p className={wedding.nikahIslamicDate && event.id === "nikah" ? "nikah-note" : "card-meta"}>
+                {event.timeLabel}
+              </p>
+            ) : null}
           </div>
         ))}
         <ReceptionRule />

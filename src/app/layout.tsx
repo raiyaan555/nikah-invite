@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import {
   Amiri,
   Aref_Ruqaa,
+  Birthstone,
   Cormorant_Garamond,
   Great_Vibes,
   Noto_Nastaliq_Urdu,
@@ -29,6 +30,13 @@ const script = Great_Vibes({
 const names = localFont({
   src: "../../brittany_signature/BrittanySignature.ttf",
   variable: "--font-names",
+  display: "swap",
+});
+
+const birthstone = Birthstone({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-birthstone",
   display: "swap",
 });
 
@@ -105,7 +113,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme={wedding.theme}
-      className={`${display.variable} ${script.variable} ${names.variable} ${body.variable} ${arabic.variable} ${calligraphy.variable} ${bismillah.variable}`}
+      className={`${display.variable} ${script.variable} ${names.variable} ${birthstone.variable} ${body.variable} ${arabic.variable} ${calligraphy.variable} ${bismillah.variable}`}
       style={{ ["--envelope-cover" as string]: `url("${withBasePath("/images/backgrounds/envelope-cover.jpg")}")` }}
     >
       <body>{children}</body>
