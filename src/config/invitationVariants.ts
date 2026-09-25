@@ -22,7 +22,7 @@ const nikah = {
   name: "Nikah",
   arabicName: "نكاح",
   dateLabel: "Saturday, 9 January 2027",
-  timeLabel: "Time to be announced",
+  timeLabel: "Lunch",
   venue: "MB Club",
   address: "202, M.G. Marg, Cantonment",
   city: "Lucknow",

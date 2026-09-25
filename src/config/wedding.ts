@@ -115,7 +115,7 @@ export const wedding = {
       name: "Walima Reception",
       arabicName: "وليمة",
       dateLabel: "Sunday, 10 January 2027",
-      timeLabel: "Time to be announced",
+      timeLabel: "Dinner",
       venue: "MB Club",
       address: "202, M.G. Marg, Cantonment",
       city: "Lucknow",
