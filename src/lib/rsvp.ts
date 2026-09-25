@@ -21,30 +21,52 @@ export type RsvpResult = {
   error?: string;
 };
 
+const publicRsvpUrl = process.env.NEXT_PUBLIC_RSVP_API_URL?.trim() ?? "";
+const staticSite = Boolean(process.env.NEXT_PUBLIC_BASE_PATH?.trim());
+
+function groomEndpoint() {
+  if (publicRsvpUrl) return publicRsvpUrl;
+  if (staticSite) return "";
+  return "/api/rsvp";
+}
+
+async function readRsvpResult(response: Response): Promise<RsvpResult> {
+  const data = (await response.json().catch(() => ({}))) as RsvpResult;
+  if (!response.ok || !data.ok) {
+    return {
+      ok: false,
+      error: data.error ?? "We could not save your reply. Please try again.",
+    };
+  }
+  return { ok: true };
+}
+
 export async function submitRsvp(payload: RsvpPayload): Promise<RsvpResult> {
   if (typeof window !== "undefined") {
     sessionStorage.setItem("wedding:rsvp", JSON.stringify(payload));
   }
 
-  const hosted =
-    payload.invitationSource === "groom"
-      ? process.env.NEXT_PUBLIC_RSVP_API_URL?.trim()
-      : "";
+  const isGroom = payload.invitationSource === "groom";
+  const endpoint = isGroom ? groomEndpoint() : "/api/rsvp";
+  if (!endpoint) {
+    return {
+      ok: false,
+      error: "We could not save your reply. Please try again.",
+    };
+  }
 
   try {
-    const response = await fetch(hosted || "/api/rsvp", {
+    const response = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        // Apps Script only answers simple CORS requests. application/json
+        // triggers a preflight that the Web App cannot accept.
+        "Content-Type":
+          isGroom && publicRsvpUrl ? "text/plain;charset=utf-8" : "application/json",
+      },
       body: JSON.stringify(payload),
     });
-    const data = (await response.json().catch(() => ({}))) as RsvpResult;
-    if (!response.ok || !data.ok) {
-      return {
-        ok: false,
-        error: data.error ?? "We could not save your reply. Please try again.",
-      };
-    }
-    return { ok: true };
+    return readRsvpResult(response);
   } catch {
     return {
       ok: false,
