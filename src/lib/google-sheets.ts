@@ -145,7 +145,19 @@ async function ensureHeader(config: SheetConfig, token: string) {
   });
 }
 
-export async function appendGroomRsvp(row: GroomSheetRow) {
+export type InvitationSource = "groom" | "bride";
+
+export function sheetIsConfigured() {
+  try {
+    readSheetConfig();
+    return true;
+  } catch (error) {
+    if (error instanceof SheetConfigError) return false;
+    throw error;
+  }
+}
+
+export async function appendInvitationRsvp(row: GroomSheetRow, source: InvitationSource) {
   const config = readSheetConfig();
   const token = await accessToken(config.email, config.privateKey);
   await ensureHeader(config, token);
@@ -164,7 +176,7 @@ export async function appendGroomRsvp(row: GroomSheetRow) {
         row.events,
         row.dietary,
         row.message,
-        "groom",
+        source,
       ]],
     }),
   });

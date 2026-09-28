@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
-import { appendGroomRsvp, SheetAppendError, SheetConfigError } from "@/lib/google-sheets";
+import {
+  appendInvitationRsvp,
+  sheetIsConfigured,
+  SheetAppendError,
+  SheetConfigError,
+  type InvitationSource,
+} from "@/lib/google-sheets";
 import type { RsvpPayload } from "@/lib/rsvp";
 
 export const runtime = "nodejs";
@@ -67,8 +73,9 @@ export async function POST(request: Request) {
     );
   }
 
-  if (payload.invitationSource === "groom") {
-    return withCors(await saveGroomRsvp(payload), request);
+  const source: InvitationSource = payload.invitationSource === "groom" ? "groom" : "bride";
+  if (source === "groom" || sheetIsConfigured()) {
+    return withCors(await saveInvitationRsvp(payload, source), request);
   }
 
   const webhook = process.env.RSVP_SHEET_WEBHOOK;
@@ -117,9 +124,9 @@ export async function POST(request: Request) {
   }
 }
 
-async function saveGroomRsvp(payload: RsvpPayload) {
+async function saveInvitationRsvp(payload: RsvpPayload, source: InvitationSource) {
   try {
-    await appendGroomRsvp({
+    await appendInvitationRsvp({
       timestamp: payload.submittedAt,
       name: payload.name.trim(),
       attending: payload.attending ? "Yes" : "No",
@@ -127,7 +134,7 @@ async function saveGroomRsvp(payload: RsvpPayload) {
       events: payload.events.join(", "),
       dietary: payload.dietary || "",
       message: payload.message.trim(),
-    });
+    }, source);
     return NextResponse.json({ ok: true });
   } catch (error) {
     if (error instanceof SheetConfigError) {
@@ -139,8 +146,8 @@ async function saveGroomRsvp(payload: RsvpPayload) {
 
     console.error(
       error instanceof SheetAppendError
-        ? "Groom RSVP sheet append failed"
-        : "Groom RSVP sheet append failed unexpectedly",
+        ? "RSVP sheet append failed"
+        : "RSVP sheet append failed unexpectedly",
     );
 
     return NextResponse.json(
